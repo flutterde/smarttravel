@@ -11,8 +11,7 @@ const Footer = () => {
         {/* LOGO & TEXT */}
         <div className="flex flex-col gap-4">
           <div className="logo flex items-center gap-2">
-            <Image src="/travlog_logo.svg" alt="logo" width={50} height={50} />
-            <h2 className="font-bold text-2xl">Travlog</h2>
+            <h2 className="font-bold text-2xl">Smartravel.</h2>
           </div>
           <p className="opacity-70">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
         </div>
@@ -35,7 +34,6 @@ const Footer = () => {
       <div className="right lg:w-2/3 flex xs:flex-col md:flex-row xs:gap-10 md:gap-0 md:justify-between">
         <FooterCard title="Company" link1="About" link2="Career" link3="Mobile" />
         <FooterCard title="Contact" link1="Why Travlog?" link2="Partner with us" link3="FAQ’s" link4="Blog" />
-        <FooterCard title="Meet Us" link1="+00 92 1234 56789" link2="info@travlog.com" link3="205. R Street, New York BD23200" />
       </div>
     </footer>
   )

@@ -14,9 +14,7 @@ export default function Home() {
       <Sponsor />
       <Services />
       <Destination />
-      <TravelPoint />
       <Features />
-      <Testimonials />
       <Newsletter />
     </>
   )
