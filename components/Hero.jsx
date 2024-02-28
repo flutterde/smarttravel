@@ -17,7 +17,6 @@ const Hero = () => {
         <p className='text-[#191825] text-opacity-50 text-xl'>We always make our customer happy by providing as many choices as possible </p>
         <div className='btn-container flex gap-4'>
           <Button type='button' title='Get Started' variant='btn_purple shadow' />
-          <Button type='button' title='Watch Demo' variant='btn_outline_black' icon='/play-circle.png' />
         </div>
       </div>
 

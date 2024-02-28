@@ -1,63 +1,111 @@
-"use client"
-import React, { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { NAV_LINKS } from "@/constants"
-import Button from "./Button"
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid"
 
-export default function Navbar() {
-  const [navbarOpen, setNavbarOpen] = useState(false)
+"use client"
+import Link from "next/link"
+import { Dialog } from "@headlessui/react"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import { useEffect, useState } from "react"
+import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs"
+
+const navigation = [
+  { name: "Home", href: "#" },
+  { name: "Discover", href: "#" },
+  { name: "Special Deals", href: "#" },
+  { name: "Contact", href: "#" },
+]
+
+export default function NavBar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { user, isLoaded, isSignedIn } = useUser()
 
   return (
-    <nav className="max-container padding-container flex justify-between py-8">
-      <div className="left">
-        <Link href="/" className="flexCenter gap-2">
-          <Image src="/travlog_logo.svg" alt="logo" width={40} height={40} />
-          <h2 className="font-bold text-lg">Travlog</h2>
-        </Link>
-      </div>
-
-      <div className="middle">
-        <ul className="hidden h-full gap-12 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <Link href={link.href} key={link.key} className="flexCenter cursor-pointer transition-all hover:font-bold">
-              {link.label}
+    <header className="">
+      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div className="flex lg:flex-1" />
+        <div className="flex lg:hidden">
+          <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5" onClick={() => setMobileMenuOpen(true)}>
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item) => (
+            <Link key={item.name} href={item.href} className="text-md font-semibold leading-6">
+              {item.name}
             </Link>
           ))}
-        </ul>
+        </div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <SignedOut>
+            <Link href="/auth" className="text-sm font-semibold leading-6 text-white px-6 py-2 rounded-5xl bg-purple-700">
+              Log in <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </SignedOut>
+          <SignedIn>
 
-        {/*-------------- NAVBAR LINKS MOBILE -----------------*/}
-        {navbarOpen ? (
-          <ul className="lg:hidden sm:block flex flex-col">
-            {NAV_LINKS.map((link) => (
-              <li className="flexCenter cursor-pointer pb-2 transition-all hover:font-bold">
-                <Link href={link.href} key={link.key}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
+            <Link href="/dashboard" className="text-sm font-semibold ">
+              {isLoaded && isSignedIn ? (
+                <div className="flex gap-8 items-center">
+                  <div className="flex items-center gap-4">
+                    <UserButton />
+                    <div>{user.firstName}</div>
+                  </div>
+                  {user.id == "user_2a2QvZD4Emtr91Ukn13M1kqdXi8" && <Link className="" href="/admin">Admin page</Link> }
 
-      <div className="right lg:flexCenter hidden gap-4">
-        <Button type="button" title="Login" variant="btn_white" />
-        <Button type="button" title="Sign Up" variant="btn_purple" />
-      </div>
+                </div>
+              ) : (
+                ""
+              )}{" "}
+            </Link>
+          </SignedIn>
+        </div>
+      </nav>
+      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <div className="fixed inset-0 z-50" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <Link href="#" className="-m-1.5 p-1.5" />
+            <button type="button" className="-m-2.5 rounded-md p-2.5" onClick={() => setMobileMenuOpen(false)}>
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="space-y-2 py-6">
+                {navigation.map((item) => (
+                  <Link key={item.name} href={item.href} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50">
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
 
-      {/*-------------- MENU ICON MOBILE -----------------*/}
-      <div className="block cursor-pointer lg:hidden">
-        {!navbarOpen ? (
-          <button onClick={() => setNavbarOpen(true)}>
-            <Bars3Icon className="h-5 w-5" />
-          </button>
-        ) : (
-          <button onClick={() => setNavbarOpen(false)}>
-            <XMarkIcon className="h-5 w-5" />
-          </button>
-        )}
-      </div>
-    </nav>
+              <div className="py-6">
+                  <SignedOut>
+                    <Link href="/auth" className="text-sm font-semibold leading-6 text-white px-6 py-3 rounded-5xl bg-purple-700">
+                      Log in <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  </SignedOut>
+                  <SignedIn>
+
+                    <Link href="/dashboard" className="text-sm font-semibold ">
+                      {isLoaded && isSignedIn ? (
+                        <div className="flex gap-8 items-center">
+                          <div className="flex items-center gap-4">
+                            <UserButton />
+                            <div>{user.firstName}</div>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}{" "}
+                    </Link>
+                  </SignedIn>
+                  </div>
+            </div>
+          </div>
+        </Dialog.Panel>
+      </Dialog>
+    </header>
   )
 }
+

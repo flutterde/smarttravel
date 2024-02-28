@@ -11,7 +11,7 @@ const Footer = () => {
         {/* LOGO & TEXT */}
         <div className="flex flex-col gap-4">
           <div className="logo flex items-center gap-2">
-            <h2 className="font-bold text-2xl">Smartravel.</h2>
+            <h2 className="font-bold text-2xl">MoroccoUnveiled.</h2>
           </div>
           <p className="opacity-70">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
         </div>
