@@ -12,7 +12,6 @@ const Services = () => {
       <div className="right xs:w-full md:w-3/5 py-4 px-4 flex gap-8 items-start hide-scrollbar overflow-x-auto">
         <ServiceCard icon="/destination.png" title="Best Tour Guide" subtitle="What looked like a small patch of purple grass, above five feet." />
         <ServiceCard icon="/booking.png" title="Easy Booking" subtitle="Square, was moving across the sand in their direction." />
-        <ServiceCard icon="/cloudy.png" title="Weather Forecast" subtitle="What looked like a small patch of purple grass, above five feet." />
       </div>
     </section>
   )
