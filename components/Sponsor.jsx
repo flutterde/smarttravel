@@ -10,7 +10,6 @@ const Sponsor = () => {
             <Image src='/sponsor2.png' alt='expedia' width={120} height={40}  />
             <Image src='/sponsor3.png' alt='bookingcom' width={140} height={40}  />
             <Image src='/sponsor4.png' alt='airbnb' width={120} height={40}/>
-            <Image src='/sponsor5.png' alt='orbitz' width={120} height={40} />
         </div>
     </section>
   )

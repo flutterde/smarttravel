@@ -16,18 +16,7 @@ const Footer = () => {
           <p className="opacity-70">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
         </div>
 
-        {/* SOCIAL MEDIA */}
-        <div className="social flex gap-4">
-          <Link href="/">
-            <Image src="/fb.png" alt="facebook" width={30} height={30} />
-          </Link>
-          <Link href="/">
-            <Image src="/twitter.png" alt="twitter" width={30} height={30} />
-          </Link>
-          <Link href="/">
-            <Image src="/instagram.png" alt="instagram" width={30} height={30} />
-          </Link>
-        </div>
+       
       </div>
 
       {/* LINK FOOTER */}

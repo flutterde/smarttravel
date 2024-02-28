@@ -1,4 +1,3 @@
-import Destination from "@/components/Destination"
 import Features from "@/components/Features"
 import Hero from "@/components/Hero"
 import Newsletter from "@/components/Newsletter"
@@ -13,7 +12,6 @@ export default function Home() {
       <Hero />
       <Sponsor />
       <Services />
-      <Destination />
       <Features />
       <Newsletter />
     </>

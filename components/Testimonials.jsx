@@ -69,26 +69,6 @@ const Testimonials = () => {
   )
 }
 
-/*
 
-<TestimonialCard Image='/profile2.jpg' name='Paradise Beach, Bantayan Island' rating='/star-yellow.png' review='$550.16'  />
-
-interface TestimonialCardProps {
-  Image: string;
-  name: string;
-  rating: string;
-  review: string;
-}
-
-const TestimonialCard = ({Image, name, rating, review} : TestimonialCardProps) => {
-  return (
-    <div className='flexCenter flex-col gap-8'>
-      <Image className='rounded-[50%] w-[100px] h-[100px]' src={Image} alt='profile' width={100} height={100} />
-      <h3>{name}</h3>
-      <Image src={rating} alt='rating' width={30} height={30} />
-      <p>{review}</p>
-    </div>
-  )
-} */
 
 export default Testimonials
